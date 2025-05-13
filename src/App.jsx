@@ -5,6 +5,10 @@ import CreateProduct from "./pages/CreateProduct";
 import UpdateProduct from "./pages/UpdateProduct";
 import DeleteProduct from "./pages/DeleteProduct";
 import AuthLayout from "./layout/AuthLayout";
+import AuthHome from "./pages/auth/AuthHome";
+import AuthCreate from "./pages/auth/AuthCreate";
+import AuthUpdate from "./pages/auth/AuthUpdate";
+import AuthDelete from "./pages/auth/AuthDelete";
 
 export default function App() {
   return (
@@ -17,10 +21,10 @@ export default function App() {
       </Route>
 
       <Route path="/auth" element={<AuthLayout />}>
-        <Route path="get-data" element/>
-        <Route path="tambah-data" element />
-        <Route path="update-data/:id" element />
-        <Route path="delete-data/:id" element />
+        <Route path="get-data" element={<AuthHome />} />
+        <Route path="tambah-data" element={<AuthCreate />} />
+        <Route path="update-data/:id" element={<AuthUpdate />} />
+        <Route path="delete-data/:id" element={<AuthDelete />} />
       </Route>
     </Routes>
   )
