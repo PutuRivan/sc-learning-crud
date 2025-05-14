@@ -15,16 +15,19 @@ import { useNavigate } from 'react-router';
 const menu = {
   noauth: [
     { name: 'GET', path: '/' },
-    { name: 'POST', path: '/tambah-data' },
-    { name: 'PUT', path: '/edit-data/1' },
-    { name: 'DELETE', path: '/hapus-data/1' },
   ],
   auth: [
-    { name: 'GET - auth', path: '/auth/get-data' },
-    { name: 'POST - auth', path: '/auth/tambah-data' },
-    { name: 'PUT - auth', path: '/auth/update-data/1' },
-    { name: 'DELETE - auth', path: '/auth/delete-data/1' },
+    { name: 'GET - auth - cookie', path: '/auth/get-data' },
+    { name: 'POST - auth - cookie', path: '/auth/tambah-data' },
+    { name: 'PUT - auth - cookie', path: '/auth/update-data/1' },
+    { name: 'DELETE - auth - cookie', path: '/auth/delete-data/1' },
   ],
+  authJwt: [
+    { name: 'GET - auth - jwt', path: '/jwt/auth/get-data' },
+    { name: 'POST - auth - jwt', path: '/jwt/auth/tambah-data' },
+    { name: 'PUT - auth - jwt', path: '/jwt/auth/update-data/1' },
+    { name: 'DELETE - auth - jwt', path: '/jwt/auth/delete-data/1' },
+  ]
 };;
 
 const Navbar = () => {
@@ -54,10 +57,23 @@ const Navbar = () => {
           {/* Auth Dropdown */}
           <Menu>
             <MenuButton as={Button} colorScheme="blue">
-              Auth
+              Auth Cookie
             </MenuButton>
             <MenuList>
               {menu.auth.map((item) => (
+                <MenuItem key={item.name} onClick={() => navigate(item.path)}>
+                  {item.name}
+                </MenuItem>
+              ))}
+            </MenuList>
+          </Menu>
+          {/* Auth JWT */}
+          <Menu>
+            <MenuButton as={Button} colorScheme="blue">
+              Auth JWT
+            </MenuButton>
+            <MenuList>
+              {menu.authJwt.map((item) => (
                 <MenuItem key={item.name} onClick={() => navigate(item.path)}>
                   {item.name}
                 </MenuItem>
@@ -68,8 +84,8 @@ const Navbar = () => {
 
         <Flex>
           <ButtonGroup>
-            <Button colorScheme='blue'>Login</Button>
-            <Button colorScheme='green'>Register</Button>
+            <Button colorScheme='blue' onClick={() => navigate('/login')}>Login</Button>
+            <Button colorScheme='green' onClick={() => navigate('/register')}>Register</Button>
           </ButtonGroup>
         </Flex>
       </Flex>

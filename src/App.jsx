@@ -9,6 +9,8 @@ import AuthHome from "./pages/auth/AuthHome";
 import AuthCreate from "./pages/auth/AuthCreate";
 import AuthUpdate from "./pages/auth/AuthUpdate";
 import AuthDelete from "./pages/auth/AuthDelete";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 export default function App() {
   return (
@@ -26,6 +28,19 @@ export default function App() {
         <Route path="update-data/:id" element={<AuthUpdate />} />
         <Route path="delete-data/:id" element={<AuthDelete />} />
       </Route>
+
+      <Route path="jwt/auth" element={<AuthLayout />}>
+        <Route path="get-data" element={<AuthHome />} />
+        <Route path="tambah-data" element={<AuthCreate />} />
+        <Route path="update-data/:id" element={<AuthUpdate />} />
+        <Route path="delete-data/:id" element={<AuthDelete />} />
+      </Route>
+
+      <Route element={<AuthLayout />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
+
     </Routes>
   )
 }
